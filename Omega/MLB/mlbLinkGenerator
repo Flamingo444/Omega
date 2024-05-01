@@ -1,0 +1,55 @@
+# Import necessary libraries
+import os
+import requests
+from lxml import html
+
+# Define function to generate player ID
+def generate_player_id(name):
+    name_list = name.split()
+    first_name = name_list[0][:2]
+    last_name = "".join([name_list[i][:5] for i in range(1, min(len(name_list), 3))])
+    player_id = last_name + first_name +'01'
+    return player_id.lower()
+
+# Define function to create link for player
+def create_player_link(player_id):
+    link = "https://www.baseball-reference.com/players/gl.fcgi?id=" + player_id + "&t=b&year=2021"
+    return link
+
+# Open file containing list of MLB players
+with open("MLB_players.txt", "r", encoding="utf-8") as f:
+    players = [line.strip() for line in f]
+
+# Create list of links for each player
+links = []
+for player in players:
+    player_id = generate_player_id(player)
+    link = create_player_link(player_id)
+
+    # Add if statement to check player name matches xpath data name
+    found_working_link = False
+    while not found_working_link:
+        response = requests.get(link)
+        if response.status_code == 200:
+            tree = html.fromstring(response.content)
+            target_data_list = tree.xpath('//*[@id="meta"]/div[2]/h1/span/text()')
+            if len(target_data_list) > 0:
+                target_data = target_data_list[0]
+                if player.lower() in target_data.lower():
+                    found_working_link = True
+                else:
+                    player_id = player_id[:-1] + str(int(player_id[-1])+1)
+                    link = create_player_link(player_id)
+            else:
+                print(f"Error: Could not find target data for {link}")
+                break
+        else:
+            print(f"Error: {response.status_code} - Could not retrieve {link}")
+            break
+
+    links.append(link)
+
+# Write links to file
+with open("MLB_links.txt", "w") as f:
+    for link in links:
+        f.write(link + "\n")

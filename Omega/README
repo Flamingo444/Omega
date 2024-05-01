@@ -1,0 +1,108 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------Authors: Flamingo and zer0-------------------------------------------------------------------
+-------------------------------------------------------------------------Project - Omega-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------Release date: March 11th--------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------Purpose-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------The purpose of this project is to increase your chances of finding a successful bet on a sports      ------------------------------
+------------------------------betting app. This is done by scraping for player game logs and finding the target averages and       ------------------------------
+------------------------------standard deviations so you can find the normal distribution of the over and under of a target #      ------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------Different Script Descriptions:------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------Main.py-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------The purpose of this source code is to run a Discord bot, which is defined in the "bot" module.       ------------------------------
+------------------------------When the script is executed, it will call the "run_discord_bot()" function from the "bot" module     ------------------------------
+------------------------------and start the bot.									           ------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------Bot.py------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------This source code is a basic template for a Discord chatbot using the Discord.py library.             ------------------------------
+------------------------------The purpose of this chatbot is to respond to messages sent by users in a Discord server              ------------------------------
+------------------------------with pre-defined responses.                                                                          ------------------------------
+------------------------------													   ------------------------------
+------------------------------The send_message function takes in three parameters - message, user_message, and is_private.         ------------------------------
+------------------------------The message parameter is the message object that was received by the bot. The user_message           ------------------------------
+------------------------------parameter is the content of the message sent by the user. The is_private parameter is a boolean      ------------------------------
+------------------------------that determines whether the bot should respond in a private message or in the same channel as        ------------------------------
+------------------------------the message was received.										   ------------------------------
+------------------------------													   ------------------------------
+------------------------------The run_discord_bot function sets up the Discord bot using the discord.Client class. It sets         ------------------------------
+------------------------------up the bot token and specifies the intents for the bot. It also defines two event functions          ------------------------------
+------------------------------- on_ready and on_message.									   ------------------------------
+------------------------------												           ------------------------------
+------------------------------The on_ready function is called when the bot is connected to Discord and ready to receive		   ------------------------------
+------------------------------messages. It prints a message indicating that the bot is running.					   ------------------------------
+------------------------------												           ------------------------------
+------------------------------The on_message function is called whenever a message is received by the bot. It checks               ------------------------------
+------------------------------if the message was sent by the bot itself and if so, returns. Otherwise, it extracts                 ------------------------------
+------------------------------the username, user message, and channel from the message object. If the user message starts          ------------------------------
+------------------------------with a question mark '?', it removes the question mark and sends the message to send_message         ------------------------------
+------------------------------with is_private=True. Otherwise, it sends the message to send_message with is_private=False.Overall, ------------------------------
+------------------------------this code sets up a basic Discord bot that responds to user messages with pre-defined responses.     ------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------Response.py-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------This source code defines a Python function get_response() that takes a message string as             ------------------------------
+------------------------------input and returns a response string based on the content of the message. The function                ------------------------------
+------------------------------is designed to be used in a chatbot or conversational interface.				           ------------------------------
+------------------------------												           ------------------------------
+------------------------------The function first converts the message to lowercase and splits it into a list of words.             ------------------------------
+------------------------------It then checks the content of the message and returns an appropriate response based on               ------------------------------
+------------------------------the following conditions:									           ------------------------------
+------------------------------													   ------------------------------
+------------------------------If the message is "!omega whois", the function returns a description of the Omega Bot.               ------------------------------
+------------------------------If the message is "!omega", the function returns a list of available commands for the Omega Bot.     ------------------------------ 
+------------------------------If the message starts with "!omega nba" and has three words, the function returns 		   ------------------------------
+------------------------------information about the NBA, including a list of player IDs and available player statistics.           ------------------------------
+------------------------------If the message starts with "!omega nba" and has four words, the function returns 			   ------------------------------
+------------------------------statistics for a specific player and player stat.							   ------------------------------
+------------------------------If the message starts with "!omega nba" and has five words, the function returns the                 ------------------------------
+------------------------------probability of a specific player hitting a target stat.						   ------------------------------
+------------------------------The function currently does not have any functionality implemented beyond NBA statistics,            ------------------------------
+------------------------------but the code comments indicate that there are plans to add support for other sports in the future.   ------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------Analysis.py-------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------This source code is for a script that calculates the over and under probabilities of hitting         ------------------------------
+------------------------------a target value for various statistics related to a basketball game. The script reads data from       ------------------------------
+------------------------------a CSV file, gets the data columns needed for base analysis, and calculates the standard              ------------------------------
+------------------------------deviation and mean of the dataset. The script then prompts the user to input a target value          ------------------------------
+------------------------------for each column, calculates the over and under probabilities using the normal distribution,          ------------------------------
+------------------------------and prints out the probabilities. The script also calculates over and under probabilities for        ------------------------------
+------------------------------additional columns that the user specifies, such as the sum of points and assists or the sum         ------------------------------
+------------------------------of points, assists, and rebounds. Finally, the script prints out the best over and under picks       ------------------------------
+------------------------------based on the calculated probabilities.								   ------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------Scraper.py--------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------This source code appears to be a Python script that is used to scrape data from a website            ------------------------------
+------------------------------related to NBA player stats. It imports several modules such as http, time, re, pandas, urllib,      ------------------------------
+------------------------------BeautifulSoup, threading, and colorama.  							           ------------------------------
+------------------------------												           ------------------------------
+------------------------------The script has several functions, but the main function is called main(). This function appears      ------------------------------
+------------------------------to call the startUI() function, which is not defined in the script.				   ------------------------------
+------------------------------													   ------------------------------
+------------------------------Another important function in the script is crawlTable(url). This function is called by main()       ------------------------------
+------------------------------and it takes a URL as input. The function tries to retrieve the HTML data from the input URL,        ------------------------------
+------------------------------parse it using Beautiful Soup, and extract player stats data from a table on the page. It then       ------------------------------
+------------------------------saves the data in a CSV file and increments a counter variable. If an exception is raised while      ------------------------------
+------------------------------trying to retrieve or parse the data, the function will catch it and store information about         ------------------------------
+------------------------------the error in lists called didNotPull and dnpReason.                                                  ------------------------------
+------------------------------													   ------------------------------
+------------------------------The script also has two helper functions called initProxies() and parseID(url). The initProxies()    ------------------------------
+------------------------------function sets up a proxy server, and the parseID(url) function extracts a player ID from a given URL.------------------------------
+------------------------------													   ------------------------------
+------------------------------The parsePlayers() function seems to be incomplete, as the ellipsis at the end of the function       ------------------------------
+------------------------------definition suggests. It appears to scrape data from a website and organize it into nested lists,     ------------------------------
+------------------------------but the specifics of how it does this are unclear due to the incomplete code.                        ------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
